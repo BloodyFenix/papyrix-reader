@@ -1,6 +1,7 @@
 #include "HomeView.h"
 
 #include <CoverHelpers.h>
+#include "../../Localization.h"
 
 #include <algorithm>
 #include <cstdio>
@@ -83,12 +84,12 @@ void render(const GfxRenderer& r, const Theme& t, const HomeView& v) {
     const int lineHeight = r.getLineHeight(t.uiFontId);
     const int centerY = cardY + cardHeight / 2;
 
-    const char* noBookText = "No book open";
+    const char* noBookText = L10N.home_no_book;
     const int noBookWidth = r.getTextWidth(t.uiFontId, noBookText);
     const int noBookX = cardX + (cardWidth - noBookWidth) / 2;
     r.drawText(t.uiFontId, noBookX, centerY - lineHeight, noBookText, t.primaryTextBlack);
 
-    const char* hintText = "Press \"Files\" to browse";
+    const char* hintText = L10N.home_press_files;
     const int hintWidth = r.getTextWidth(t.uiFontId, hintText);
     const int hintX = cardX + (cardWidth - hintWidth) / 2;
     r.drawText(t.uiFontId, hintX, centerY + lineHeight / 2, hintText, t.secondaryTextBlack);
@@ -105,7 +106,7 @@ void render(const GfxRenderer& r, const Theme& t, const FileListView& v) {
   r.clearScreen(t.backgroundColor);
 
   // Title with path
-  title(r, t, t.screenMarginTop, "Files");
+  title(r, t, t.screenMarginTop, L10N.title_files);
 
   // Current path (truncated if needed)
   const int pathY = 40;
@@ -139,7 +140,7 @@ void render(const GfxRenderer& r, const Theme& t, const FileListView& v) {
 void render(const GfxRenderer& r, const Theme& t, ChapterListView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "Chapters");
+  title(r, t, t.screenMarginTop, L10N.title_chapters);
 
   constexpr int listStartY = 60;
   const int availableHeight = r.getScreenHeight() - listStartY - 50;
