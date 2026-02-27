@@ -9,6 +9,7 @@
 #include <algorithm>
 
 #include "../Battery.h"
+#include "../Localization.h"
 
 #define TAG "SETTINGS_UI"
 #include "../config.h"
@@ -519,6 +520,9 @@ void SettingsState::loadDeviceSettings() {
 
   // Index 7: Side Buttons (Prev/Next=0, Next/Prev=1)
   deviceView_.values[7] = settings.sideButtonLayout;
+  
+  // Index 8: Language (English=0, Russian=1)
+  deviceView_.values[8] = settings.language;
 }
 
 void SettingsState::saveDeviceSettings() {
@@ -548,6 +552,12 @@ void SettingsState::saveDeviceSettings() {
 
   // Index 7: Side Buttons - deferred to goBack() on screen exit.
   // Same as front buttons: changing layout mid-navigation causes ghost events.
+  
+  // Index 8: Language - apply immediately
+  if (settings.language != deviceView_.values[8]) {
+    settings.language = deviceView_.values[8];
+    papyrix::Localization::setLanguage(static_cast<papyrix::Language>(settings.language));
+  }
 }
 
 void SettingsState::populateSystemInfo() {

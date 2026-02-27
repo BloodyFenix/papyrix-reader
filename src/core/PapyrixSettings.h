@@ -5,6 +5,7 @@
 #include <cstdint>
 
 #include "Result.h"
+#include "../Localization.h"
 
 struct Theme;
 
@@ -85,6 +86,7 @@ struct Settings {
   char fileListSelectedName[128] = "";  // FileListState: last selected filename
   uint16_t fileListSelectedIndex = 0;   // FileListState: last selected index
   uint8_t frontButtonLayout = FrontBCLR;
+  uint8_t language = static_cast<uint8_t>(Language::English);  // UI language
 
   // Persistence (using drivers::Storage wrapper)
   Result<void> load(drivers::Storage& storage);

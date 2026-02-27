@@ -30,6 +30,7 @@
 
 #include "Battery.h"
 #include "FontManager.h"
+#include "Localization.h"
 #include "MappedInputManager.h"
 #include "ThemeManager.h"
 #include "config.h"
@@ -340,6 +341,9 @@ bool earlyInit() {
   // (no USB) resets RTC memory and the short power button setting is ignored
   papyrix::core.settings.loadFromFile();
   rtcPowerButtonDurationMs = papyrix::core.settings.getPowerButtonDuration();
+  
+  // Apply saved language
+  papyrix::Localization::setLanguage(static_cast<papyrix::Language>(papyrix::core.settings.language));
 
   const auto wakeup = getWakeupInfo();
   if (wakeup.isPowerButton) {
