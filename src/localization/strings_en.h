@@ -31,6 +31,7 @@ constexpr LocalizedStrings STRINGS_EN = {
   .title_device = "Device",
   .title_network = "Network",
   .title_calibre_sync = "Calibre Sync",
+  .title_sync = "Sync",
   
   // Settings menu items
   .settings_reader = "Reader",
@@ -39,6 +40,7 @@ constexpr LocalizedStrings STRINGS_EN = {
   .settings_system_info = "System Info",
   
   // Reader menu items
+  .reader_menu = "Menu",
   .reader_chapters = "Chapters",
   .reader_settings = "Settings",
   .reader_home = "Home",
@@ -106,6 +108,7 @@ constexpr LocalizedStrings STRINGS_EN = {
   .sleep_30min = "30 minutes",
   .sleep_1hour = "1 hour",
   .sleep_never = "Never",
+  .sleep_sleeping = "SLEEPING",
   
   // Sleep screen values
   .sleep_screen_blank = "Blank",

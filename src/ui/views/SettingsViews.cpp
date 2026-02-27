@@ -1,4 +1,5 @@
 #include "SettingsViews.h"
+#include "../../Localization.h"
 
 namespace ui {
 
@@ -50,7 +51,7 @@ const DeviceSettingsView::SettingDef DeviceSettingsView::DEFS[SETTING_COUNT] = {
 void render(const GfxRenderer& r, const Theme& t, const SettingsMenuView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "Settings");
+  title(r, t, t.screenMarginTop, L10N.title_settings);
 
   const int startY = 60;
   for (int i = 0; i < SettingsMenuView::ITEM_COUNT; i++) {
@@ -100,14 +101,26 @@ void render(const GfxRenderer& r, const Theme& t, const SystemInfoView& v) {
 void render(const GfxRenderer& r, const Theme& t, const ReaderSettingsView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "Reader Settings");
+  title(r, t, t.screenMarginTop, L10N.settings_reader);
+
+  // Create array of localized labels
+  const char* labels[ReaderSettingsView::SETTING_COUNT] = {
+    L10N.reader_theme,
+    L10N.reader_font_size,
+    L10N.reader_text_layout,
+    L10N.reader_line_spacing,
+    L10N.reader_text_aa,
+    L10N.reader_alignment,
+    L10N.reader_hyphenation,
+    L10N.reader_show_images,
+    L10N.reader_status_bar,
+    L10N.reader_orientation,
+  };
 
   const int startY = 60;
   for (int i = 0; i < ReaderSettingsView::SETTING_COUNT; i++) {
     const int y = startY + i * (t.itemHeight + t.itemSpacing);
-    const auto& def = ReaderSettingsView::DEFS[i];
-
-    enumValue(r, t, y, def.label, v.getCurrentValueStr(i), i == v.selected);
+    enumValue(r, t, y, labels[i], v.getCurrentValueStr(i), i == v.selected);
   }
 
   buttonBar(r, t, v.buttons);

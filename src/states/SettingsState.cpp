@@ -553,10 +553,13 @@ void SettingsState::saveDeviceSettings() {
   // Index 7: Side Buttons - deferred to goBack() on screen exit.
   // Same as front buttons: changing layout mid-navigation causes ghost events.
   
-  // Index 8: Language - apply immediately
+  // Index 8: Language - apply immediately and trigger re-render
   if (settings.language != deviceView_.values[8]) {
     settings.language = deviceView_.values[8];
     papyrix::Localization::setLanguage(static_cast<papyrix::Language>(settings.language));
+    // Force re-render of device view to show new language
+    deviceView_.needsRender = true;
+    needsRender_ = true;
   }
 }
 

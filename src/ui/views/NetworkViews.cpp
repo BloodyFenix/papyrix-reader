@@ -4,6 +4,8 @@
 
 #include <cstdio>
 
+#include "Localization.h"
+
 namespace ui {
 
 namespace {
@@ -94,7 +96,7 @@ void render(const GfxRenderer& r, const Theme& t, const WifiListView& v) {
 void render(const GfxRenderer& r, const Theme& t, const WifiConnectingView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "Connecting");
+  title(r, t, t.screenMarginTop, L10N.network_connecting);
 
   const int centerY = r.getScreenHeight() / 2 - 60;
 

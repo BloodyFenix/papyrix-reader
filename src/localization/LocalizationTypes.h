@@ -35,6 +35,7 @@ struct LocalizedStrings {
   const char* title_device;
   const char* title_network;
   const char* title_calibre_sync;
+  const char* title_sync;
   
   // Settings menu items
   const char* settings_reader;
@@ -43,6 +44,7 @@ struct LocalizedStrings {
   const char* settings_system_info;
   
   // Reader menu items
+  const char* reader_menu;
   const char* reader_chapters;
   const char* reader_settings;
   const char* reader_home;
@@ -110,6 +112,7 @@ struct LocalizedStrings {
   const char* sleep_30min;
   const char* sleep_1hour;
   const char* sleep_never;
+  const char* sleep_sleeping;
   
   // Sleep screen values
   const char* sleep_screen_blank;

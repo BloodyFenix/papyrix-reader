@@ -31,6 +31,7 @@ constexpr LocalizedStrings STRINGS_RU = {
   .title_device = "Устройство",
   .title_network = "Сеть",
   .title_calibre_sync = "Синхр. Calibre",
+  .title_sync = "Синхронизация",
   
   // Settings menu items
   .settings_reader = "Чтение",
@@ -39,6 +40,7 @@ constexpr LocalizedStrings STRINGS_RU = {
   .settings_system_info = "Информация",
   
   // Reader menu items
+  .reader_menu = "Меню",
   .reader_chapters = "Главы",
   .reader_settings = "Настройки",
   .reader_home = "Домой",
@@ -106,6 +108,7 @@ constexpr LocalizedStrings STRINGS_RU = {
   .sleep_30min = "30 минут",
   .sleep_1hour = "1 час",
   .sleep_never = "Никогда",
+  .sleep_sleeping = "СПЯЩИЙ РЕЖИМ",
   
   // Sleep screen values
   .sleep_screen_blank = "Пустой",

@@ -19,10 +19,10 @@ namespace {
 constexpr uint32_t SETTINGS_MAGIC = 0x53585050;
 // Minimum version we can read (allows backward compatibility)
 constexpr uint8_t MIN_SETTINGS_VERSION = 3;
-// Version 9: Moved frontButtonLayout from Theme to Settings
-constexpr uint8_t SETTINGS_FILE_VERSION = 9;
+// Version 10: Added language setting
+constexpr uint8_t SETTINGS_FILE_VERSION = 10;
 // Increment this when adding new persisted settings fields
-constexpr uint8_t SETTINGS_COUNT = 25;
+constexpr uint8_t SETTINGS_COUNT = 26;
 }  // namespace
 
 Result<void> Settings::save(drivers::Storage& storage) const {
@@ -65,6 +65,7 @@ Result<void> Settings::save(drivers::Storage& storage) const {
   outputFile.write(reinterpret_cast<const uint8_t*>(fileListSelectedName), sizeof(fileListSelectedName));
   serialization::writePod(outputFile, fileListSelectedIndex);
   serialization::writePod(outputFile, frontButtonLayout);
+  serialization::writePod(outputFile, language);
   outputFile.close();
 
   LOG_INF(TAG, "Settings saved to file");
@@ -164,6 +165,8 @@ Result<void> Settings::load(drivers::Storage& storage) {
     if (++settingsRead >= fileSettingsCount) break;
     serialization::readPodValidated(inputFile, frontButtonLayout, uint8_t(2));
     if (++settingsRead >= fileSettingsCount) break;
+    serialization::readPodValidated(inputFile, language, uint8_t(2));
+    if (++settingsRead >= fileSettingsCount) break;
   } while (false);
 
   // Migrate font size from version < 8 (enum values shifted +1 for FontXSmall)
@@ -255,6 +258,7 @@ bool Settings::saveToFile() const {
   outputFile.write(reinterpret_cast<const uint8_t*>(fileListSelectedName), sizeof(fileListSelectedName));
   serialization::writePod(outputFile, fileListSelectedIndex);
   serialization::writePod(outputFile, frontButtonLayout);
+  serialization::writePod(outputFile, language);
   outputFile.close();
 
   LOG_INF(TAG, "Settings saved to file");
@@ -349,6 +353,8 @@ bool Settings::loadFromFile() {
     serialization::readPod(inputFile, fileListSelectedIndex);
     if (++settingsRead >= fileSettingsCount) break;
     serialization::readPodValidated(inputFile, frontButtonLayout, uint8_t(2));
+    if (++settingsRead >= fileSettingsCount) break;
+    serialization::readPodValidated(inputFile, language, uint8_t(2));
     if (++settingsRead >= fileSettingsCount) break;
   } while (false);
 

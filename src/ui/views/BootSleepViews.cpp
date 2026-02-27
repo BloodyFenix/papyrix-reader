@@ -1,6 +1,7 @@
 #include "BootSleepViews.h"
 
 #include <EInkDisplay.h>
+#include "Localization.h"
 
 namespace ui {
 
@@ -43,7 +44,7 @@ void render(const GfxRenderer& r, const Theme& t, const SleepView& v) {
     // Text at same positions as boot screen, but "SLEEPING" instead of status
     // Always use primaryTextBlack - invertScreen() will handle color for dark mode
     r.drawCenteredText(t.uiFontId, pageHeight / 2 + 70, "Papyrix", t.primaryTextBlack, BOLD);
-    r.drawCenteredText(t.smallFontId, pageHeight / 2 + 110, "SLEEPING", t.primaryTextBlack);
+    r.drawCenteredText(t.smallFontId, pageHeight / 2 + 110, L10N.sleep_sleeping, t.primaryTextBlack);
 
     // Note: No version text on sleep screen (matches old behavior)
 

@@ -2,6 +2,8 @@
 
 #include <cstdio>
 
+#include "Localization.h"
+
 namespace ui {
 
 // Static definitions
@@ -83,7 +85,7 @@ void render(const GfxRenderer& r, const Theme& t, const ReaderMenuView& v) {
   r.drawRect(menuX, menuY, menuW, menuH, t.primaryTextBlack);
 
   // Menu title
-  r.drawCenteredText(t.uiFontId, menuY + 10, "Menu", t.primaryTextBlack, EpdFontFamily::BOLD);
+  r.drawCenteredText(t.uiFontId, menuY + 10, L10N.reader_menu, t.primaryTextBlack, EpdFontFamily::BOLD);
 
   // Menu items
   const int itemStartY = menuY + 40;
