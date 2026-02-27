@@ -171,6 +171,7 @@ papyrix::Localization::setLanguage(papyrix::Language::Russian);
 
 ## Ссылки
 
+- [Papyrix Reader (форк с локализацией)](https://github.com/BloodyFenix/papyrix-reader)
 - [Оригинальный Papyrix Reader](https://github.com/bigbag/papyrix-reader)
 - [Документация по локализации](docs/localization.md)
 - [Руководство пользователя](docs/user_guide.md)

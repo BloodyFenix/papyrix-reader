@@ -100,6 +100,7 @@ function t(key) {
 
 // Apply translations to elements with data-i18n attribute
 function applyTranslations() {
+  // Translate text content
   document.querySelectorAll('[data-i18n]').forEach(element => {
     const key = element.getAttribute('data-i18n');
     const translation = t(key);
@@ -111,6 +112,13 @@ function applyTranslations() {
     } else {
       element.textContent = translation;
     }
+  });
+  
+  // Translate placeholder attributes
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+    const key = element.getAttribute('data-i18n-placeholder');
+    const translation = t(key);
+    element.setAttribute('placeholder', translation);
   });
 }
 
@@ -175,6 +183,7 @@ if (document.readyState === 'loading') {
 // Export for use in other scripts
 window.i18n = {
   t,
+  init: initI18n,
   setLanguage,
   getCurrentLanguage: () => currentLang,
   getSystemLanguage: () => systemLang,

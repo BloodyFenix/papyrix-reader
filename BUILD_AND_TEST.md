@@ -344,7 +344,8 @@ pio boards esp32-c3-devkitm-1
 
 - [PlatformIO Documentation](https://docs.platformio.org/)
 - [ESP32-C3 Documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/)
-- [Papyrix Reader GitHub](https://github.com/bigbag/papyrix-reader)
+- [Papyrix Reader (форк с локализацией)](https://github.com/BloodyFenix/papyrix-reader)
+- [Оригинальный Papyrix Reader](https://github.com/bigbag/papyrix-reader)
 
 ## Поддержка
 
