@@ -44,7 +44,7 @@ constexpr const char* const NetworkModeView::ITEMS[];
 void render(const GfxRenderer& r, const Theme& t, const NetworkModeView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "Network Mode");
+  title(r, t, t.screenMarginTop, L10N.network_mode);
 
   const int startY = 100;
   for (int i = 0; i < NetworkModeView::ITEM_COUNT; i++) {
@@ -55,9 +55,9 @@ void render(const GfxRenderer& r, const Theme& t, const NetworkModeView& v) {
   // Description below options
   const int descY = startY + 2 * (t.itemHeight + 20) + 40;
   if (v.selected == 0) {
-    centeredText(r, t, descY, "Connect to existing WiFi");
+    centeredText(r, t, descY, L10N.network_mode_connect);
   } else {
-    centeredText(r, t, descY, "Create WiFi hotspot");
+    centeredText(r, t, descY, L10N.network_mode_hotspot);
   }
 
   buttonBar(r, t, v.buttons);
@@ -68,15 +68,15 @@ void render(const GfxRenderer& r, const Theme& t, const NetworkModeView& v) {
 void render(const GfxRenderer& r, const Theme& t, const WifiListView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "Select Network");
+  title(r, t, t.screenMarginTop, L10N.network_select);
 
   if (v.scanning) {
     const int centerY = r.getScreenHeight() / 2;
     centeredText(r, t, centerY, v.statusText);
   } else if (v.networkCount == 0) {
     const int centerY = r.getScreenHeight() / 2;
-    centeredText(r, t, centerY, "No networks found");
-    centeredText(r, t, centerY + 30, "Press Confirm to scan again");
+    centeredText(r, t, centerY, L10N.network_no_networks);
+    centeredText(r, t, centerY + 30, L10N.network_scan_again);
   } else {
     const int listStartY = 60;
     const int pageStart = v.getPageStart();
@@ -121,7 +121,7 @@ void render(const GfxRenderer& r, const Theme& t, const WifiConnectingView& v) {
 void render(const GfxRenderer& r, const Theme& t, const WebServerView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "Web Server");
+  title(r, t, t.screenMarginTop, L10N.network_web_server);
 
   if (v.serverRunning) {
     // Build URL string
@@ -157,7 +157,7 @@ void render(const GfxRenderer& r, const Theme& t, const WebServerView& v) {
       centeredText(r, t, labelY + 30, v.ssid);
     }
   } else {
-    centeredText(r, t, 180, "Server stopped");
+    centeredText(r, t, 180, L10N.network_server_stopped);
   }
 
   buttonBar(r, t, v.buttons);

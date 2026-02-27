@@ -83,7 +83,7 @@ void render(const GfxRenderer& r, const Theme& t, const CleanupMenuView& v) {
 void render(const GfxRenderer& r, const Theme& t, const SystemInfoView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "System Info");
+  title(r, t, t.screenMarginTop, L10N.title_system_info);
 
   const int lineHeight = r.getLineHeight(t.uiFontId) + 5;
   const int startY = 60;
@@ -131,7 +131,7 @@ void render(const GfxRenderer& r, const Theme& t, const ReaderSettingsView& v) {
 void render(const GfxRenderer& r, const Theme& t, const DeviceSettingsView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "Device Settings");
+  title(r, t, t.screenMarginTop, L10N.title_device);
 
   const int startY = 60;
   for (int i = 0; i < DeviceSettingsView::SETTING_COUNT; i++) {

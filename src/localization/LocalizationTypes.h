@@ -158,11 +158,18 @@ struct LocalizedStrings {
   const char* info_wifi_mac;
   
   // Network
+  const char* network_mode;
+  const char* network_mode_connect;
+  const char* network_mode_hotspot;
+  const char* network_select;
   const char* network_scanning;
   const char* network_connecting;
   const char* network_connected;
   const char* network_failed;
   const char* network_no_networks;
+  const char* network_scan_again;
+  const char* network_web_server;
+  const char* network_server_stopped;
   
   // Calibre sync
   const char* calibre_connecting;
@@ -181,6 +188,13 @@ struct LocalizedStrings {
   const char* file_opening;
   const char* file_parsing;
   const char* file_error;
+  
+  // Reader
+  const char* reader_go_to_page;
+  
+  // Buttons/Actions
+  const char* button_yes;
+  const char* button_no;
 };
 
 }  // namespace papyrix

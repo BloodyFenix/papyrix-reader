@@ -154,11 +154,18 @@ constexpr LocalizedStrings STRINGS_EN = {
   .info_wifi_mac = "WiFi MAC",
   
   // Network
+  .network_mode = "Network Mode",
+  .network_mode_connect = "Connect to existing WiFi",
+  .network_mode_hotspot = "Create WiFi hotspot",
+  .network_select = "Select Network",
   .network_scanning = "Scanning...",
   .network_connecting = "Connecting...",
   .network_connected = "Connected",
   .network_failed = "Connection Failed",
   .network_no_networks = "No networks found",
+  .network_scan_again = "Press Confirm to scan again",
+  .network_web_server = "Web Server",
+  .network_server_stopped = "Server stopped",
   
   // Calibre sync
   .calibre_connecting = "Connecting to Calibre...",
@@ -176,7 +183,14 @@ constexpr LocalizedStrings STRINGS_EN = {
   // File operations
   .file_opening = "Opening file...",
   .file_parsing = "Parsing...",
-  .file_error = "File error"
+  .file_error = "File error",
+  
+  // Reader
+  .reader_go_to_page = "Go to Page",
+  
+  // Buttons/Actions
+  .button_yes = "Yes",
+  .button_no = "No"
 };
 
 }  // namespace papyrix

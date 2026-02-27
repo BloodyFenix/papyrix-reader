@@ -108,7 +108,7 @@ void render(const GfxRenderer& r, const Theme& t, const ReaderMenuView& v) {
 void render(const GfxRenderer& r, const Theme& t, const JumpToPageView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "Go to Page");
+  title(r, t, t.screenMarginTop, L10N.reader_go_to_page);
 
   const int centerY = r.getScreenHeight() / 2 - 40;
 

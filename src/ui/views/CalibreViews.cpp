@@ -1,13 +1,14 @@
 #include "CalibreViews.h"
 
 #include "../Elements.h"
+#include "Localization.h"
 
 namespace ui {
 
 void render(const GfxRenderer& r, const Theme& t, const CalibreView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "Calibre Sync");
+  title(r, t, t.screenMarginTop, L10N.title_calibre_sync);
 
   const int centerY = r.getScreenHeight() / 2 - 60;
 
