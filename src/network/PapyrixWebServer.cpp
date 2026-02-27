@@ -9,6 +9,7 @@
 #include <esp_heap_caps.h>
 
 #include "../config.h"
+#include "../Localization.h"
 #include "html/FilesPageHtml.generated.h"
 #include "html/HomePageHtml.generated.h"
 #include "html/SleepPageHtml.generated.h"
@@ -68,6 +69,7 @@ void PapyrixWebServer::begin() {
   server_->on("/", HTTP_GET, [this] { handleRoot(); });
   server_->on("/files", HTTP_GET, [this] { handleFileList(); });
   server_->on("/api/status", HTTP_GET, [this] { handleStatus(); });
+  server_->on("/api/language", HTTP_GET, [this] { handleLanguage(); });
   server_->on("/api/files", HTTP_GET, [this] { handleFileListData(); });
   server_->on("/upload", HTTP_POST, [this] { handleUploadPost(); }, [this] { handleUpload(); });
   server_->on("/mkdir", HTTP_POST, [this] { handleCreateFolder(); });
@@ -134,6 +136,17 @@ void PapyrixWebServer::handleStatus() {
            PAPYRIX_VERSION, ipAddr.c_str(), apMode_ ? "AP" : "STA", apMode_ ? 0 : WiFi.RSSI(), ESP.getFreeHeap(),
            millis() / 1000);
 
+  server_->send(200, "application/json", json);
+}
+
+void PapyrixWebServer::handleLanguage() {
+  // Get current language from system
+  Language lang = Localization::getLanguage();
+  const char* langCode = (lang == Language::Russian) ? "ru" : "en";
+  
+  char json[64];
+  snprintf(json, sizeof(json), "{\"language\":\"%s\"}", langCode);
+  
   server_->send(200, "application/json", json);
 }
 

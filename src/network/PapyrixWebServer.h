@@ -46,6 +46,7 @@ class PapyrixWebServer {
   void handleRoot();
   void handleNotFound();
   void handleStatus();
+  void handleLanguage();
   void handleFileList();
   void handleFileListData();
   void handleUpload();
