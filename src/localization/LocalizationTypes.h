@@ -24,6 +24,11 @@ struct LocalizedStrings {
   const char* btn_select;
   const char* btn_menu;
   const char* btn_home;
+  const char* btn_open;
+  const char* btn_run;
+  const char* btn_confirm;
+  const char* btn_left;   // "<"
+  const char* btn_right;  // ">"
   
   // Menu titles
   const char* title_files;
@@ -85,15 +90,15 @@ struct LocalizedStrings {
   const char* align_right;
   
   // Status bar values
-  const char* status_bar_off;
-  const char* status_bar_minimal;
-  const char* status_bar_full;
+  const char* status_bar_none;
+  const char* status_bar_title;
+  const char* status_bar_chapter;
   
   // Orientation values
   const char* orient_portrait;
-  const char* orient_landscape;
-  const char* orient_portrait_inv;
-  const char* orient_landscape_inv;
+  const char* orient_landscape_cw;
+  const char* orient_inverted;
+  const char* orient_landscape_ccw;
   
   // Device settings
   const char* device_sleep_timeout;
@@ -145,9 +150,9 @@ struct LocalizedStrings {
   const char* buttons_disabled;
   
   // Cleanup menu
-  const char* cleanup_cache;
-  const char* cleanup_thumbnails;
-  const char* cleanup_all;
+  const char* cleanup_book_cache;
+  const char* cleanup_device_storage;
+  const char* cleanup_factory_reset;
   
   // System info labels
   const char* info_firmware;

@@ -20,6 +20,11 @@ constexpr LocalizedStrings STRINGS_EN = {
   .btn_select = "Select",
   .btn_menu = "Menu",
   .btn_home = "Home",
+  .btn_open = "Open",
+  .btn_run = "Run",
+  .btn_confirm = "Confirm",
+  .btn_left = "<",
+  .btn_right = ">",
   
   // Menu titles
   .title_files = "Files",
@@ -81,15 +86,15 @@ constexpr LocalizedStrings STRINGS_EN = {
   .align_right = "Right",
   
   // Status bar values
-  .status_bar_off = "Off",
-  .status_bar_minimal = "Minimal",
-  .status_bar_full = "Full",
+  .status_bar_none = "None",
+  .status_bar_title = "Title",
+  .status_bar_chapter = "Chapter",
   
   // Orientation values
   .orient_portrait = "Portrait",
-  .orient_landscape = "Landscape",
-  .orient_portrait_inv = "Portrait (Inverted)",
-  .orient_landscape_inv = "Landscape (Inverted)",
+  .orient_landscape_cw = "Landscape CW",
+  .orient_inverted = "Inverted",
+  .orient_landscape_ccw = "Landscape CCW",
   
   // Device settings
   .device_sleep_timeout = "Auto Sleep Timeout",
@@ -141,9 +146,9 @@ constexpr LocalizedStrings STRINGS_EN = {
   .buttons_disabled = "Disabled",
   
   // Cleanup menu
-  .cleanup_cache = "Clear Page Cache",
-  .cleanup_thumbnails = "Clear Thumbnails",
-  .cleanup_all = "Clear All",
+  .cleanup_book_cache = "Clear Book Cache",
+  .cleanup_device_storage = "Clear Device Storage",
+  .cleanup_factory_reset = "Factory Reset",
   
   // System info labels
   .info_firmware = "Firmware",

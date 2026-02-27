@@ -20,6 +20,11 @@ constexpr LocalizedStrings STRINGS_RU = {
   .btn_select = "Выбор",
   .btn_menu = "Меню",
   .btn_home = "Домой",
+  .btn_open = "Открыть",
+  .btn_run = "Запуск",
+  .btn_confirm = "Подтв.",
+  .btn_left = "<",
+  .btn_right = ">",
   
   // Menu titles
   .title_files = "Файлы",
@@ -81,15 +86,15 @@ constexpr LocalizedStrings STRINGS_RU = {
   .align_right = "По правому краю",
   
   // Status bar values
-  .status_bar_off = "Выкл",
-  .status_bar_minimal = "Минимальная",
-  .status_bar_full = "Полная",
+  .status_bar_none = "Нет",
+  .status_bar_title = "Название",
+  .status_bar_chapter = "Глава",
   
   // Orientation values
   .orient_portrait = "Портрет",
-  .orient_landscape = "Альбом",
-  .orient_portrait_inv = "Портрет (перевёрнутый)",
-  .orient_landscape_inv = "Альбом (перевёрнутый)",
+  .orient_landscape_cw = "Альбом ПЧС",
+  .orient_inverted = "Перевёрнутый",
+  .orient_landscape_ccw = "Альбом ПРЧС",
   
   // Device settings
   .device_sleep_timeout = "Таймаут сна",
@@ -141,9 +146,9 @@ constexpr LocalizedStrings STRINGS_RU = {
   .buttons_disabled = "Отключены",
   
   // Cleanup menu
-  .cleanup_cache = "Очистить кэш страниц",
-  .cleanup_thumbnails = "Очистить миниатюры",
-  .cleanup_all = "Очистить всё",
+  .cleanup_book_cache = "Очистить кэш книг",
+  .cleanup_device_storage = "Очистить память устройства",
+  .cleanup_factory_reset = "Сброс до заводских",
   
   // System info labels
   .info_firmware = "Прошивка",

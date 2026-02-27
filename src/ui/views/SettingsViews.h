@@ -18,7 +18,7 @@ struct SettingsMenuView {
   static constexpr const char* const ITEMS[] = {"Reader", "Device", "Cleanup", "System Info"};
   static constexpr int ITEM_COUNT = 4;
 
-  ButtonBar buttons{"Back", "Open", "", ""};
+  ButtonBar buttons{"", "", "", ""};  // Will be set dynamically with localized strings
   int8_t selected = 0;
   bool needsRender = true;
 
@@ -43,7 +43,7 @@ struct CleanupMenuView {
   static constexpr const char* const ITEMS[] = {"Clear Book Cache", "Clear Device Storage", "Factory Reset"};
   static constexpr int ITEM_COUNT = 3;
 
-  ButtonBar buttons{"Back", "Run", "", ""};
+  ButtonBar buttons{"", "", "", ""};  // Will be set dynamically with localized strings
   int8_t selected = 0;
   bool needsRender = true;
 
@@ -73,7 +73,7 @@ struct SystemInfoView {
   };
 
   static constexpr int MAX_FIELDS = 8;
-  ButtonBar buttons{"Back", "", "", ""};
+  ButtonBar buttons{"", "", "", ""};  // Will be set dynamically with localized strings
   InfoField fields[MAX_FIELDS] = {};
   uint8_t fieldCount = 0;
   bool needsRender = true;
@@ -124,7 +124,7 @@ struct ReaderSettingsView {
   static constexpr int MAX_THEMES = 16;
   static const SettingDef DEFS[SETTING_COUNT];
 
-  ButtonBar buttons{"Back", "", "<", ">"};
+  ButtonBar buttons{"", "", "", ""};  // Will be set dynamically with localized strings
 
   // Theme selection state (loaded from ThemeManager)
   char themeNames[MAX_THEMES][32] = {};
@@ -212,7 +212,7 @@ struct DeviceSettingsView {
   static constexpr int SETTING_COUNT = 9;
   static const SettingDef DEFS[SETTING_COUNT];
 
-  ButtonBar buttons{"Back", "", "<", ">"};
+  ButtonBar buttons{"", "", "", ""};  // Will be set dynamically with localized strings
   uint8_t values[SETTING_COUNT] = {0};
   int8_t selected = 0;
   bool needsRender = true;
@@ -253,7 +253,7 @@ struct ConfirmDialogView {
   static constexpr int MAX_TITLE_LEN = 32;
   static constexpr int MAX_LINE_LEN = 48;
 
-  ButtonBar buttons{"Back", "Confirm", "<<", ">>"};
+  ButtonBar buttons{"", "", "", ""};  // Will be set dynamically with localized strings
   char title[MAX_TITLE_LEN] = "Confirm?";
   char line1[MAX_LINE_LEN] = "";
   char line2[MAX_LINE_LEN] = "";

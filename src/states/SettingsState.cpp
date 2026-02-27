@@ -45,6 +45,14 @@ void SettingsState::enter(Core& core) {
   currentScreen_ = returnScreen_;
   returnScreen_ = SettingsScreen::Menu;  // Reset for next normal entry
 
+  // Set localized button labels
+  menuView_.buttons = ui::ButtonBar{L10N.btn_back, L10N.btn_open, "", ""};
+  readerView_.buttons = ui::ButtonBar{L10N.btn_back, "", L10N.btn_left, L10N.btn_right};
+  deviceView_.buttons = ui::ButtonBar{L10N.btn_back, "", L10N.btn_left, L10N.btn_right};
+  cleanupView_.buttons = ui::ButtonBar{L10N.btn_back, L10N.btn_run, "", ""};
+  infoView_.buttons = ui::ButtonBar{L10N.btn_back, "", "", ""};
+  confirmView_.buttons = ui::ButtonBar{L10N.btn_back, L10N.btn_confirm, "<<", ">>"};
+
   // Reset all views to ensure clean state
   menuView_.selected = 0;
   menuView_.needsRender = true;

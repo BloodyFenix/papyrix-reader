@@ -15,17 +15,18 @@ constexpr const char* const ReaderSettingsView::ALIGNMENT_VALUES[];
 constexpr const char* const ReaderSettingsView::STATUS_BAR_VALUES[];
 constexpr const char* const ReaderSettingsView::ORIENTATION_VALUES[];
 
+// Note: Labels are now set dynamically in render() using L10N
 const ReaderSettingsView::SettingDef ReaderSettingsView::DEFS[SETTING_COUNT] = {
-    {"Theme", SettingType::ThemeSelect, nullptr, 0},
-    {"Font Size", SettingType::Enum, FONT_SIZE_VALUES, 4},
-    {"Text Layout", SettingType::Enum, TEXT_LAYOUT_VALUES, 3},
-    {"Line Spacing", SettingType::Enum, LINE_SPACING_VALUES, 4},
-    {"Text Anti-Aliasing", SettingType::Toggle, nullptr, 0},
-    {"Paragraph Alignment", SettingType::Enum, ALIGNMENT_VALUES, 4},
-    {"Hyphenation", SettingType::Toggle, nullptr, 0},
-    {"Show Images", SettingType::Toggle, nullptr, 0},
-    {"Status Bar", SettingType::Enum, STATUS_BAR_VALUES, 3},
-    {"Reading Orientation", SettingType::Enum, ORIENTATION_VALUES, 4},
+    {"", SettingType::ThemeSelect, nullptr, 0},
+    {"", SettingType::Enum, FONT_SIZE_VALUES, 4},
+    {"", SettingType::Enum, TEXT_LAYOUT_VALUES, 3},
+    {"", SettingType::Enum, LINE_SPACING_VALUES, 4},
+    {"", SettingType::Toggle, nullptr, 0},
+    {"", SettingType::Enum, ALIGNMENT_VALUES, 4},
+    {"", SettingType::Toggle, nullptr, 0},
+    {"", SettingType::Toggle, nullptr, 0},
+    {"", SettingType::Enum, STATUS_BAR_VALUES, 3},
+    {"", SettingType::Enum, ORIENTATION_VALUES, 4},
 };
 
 // DeviceSettingsView static definitions
@@ -38,12 +39,13 @@ constexpr const char* const DeviceSettingsView::TOGGLE_VALUES[];
 constexpr const char* const DeviceSettingsView::FRONT_BUTTON_VALUES[];
 constexpr const char* const DeviceSettingsView::SIDE_BUTTON_VALUES[];
 
+// Note: Labels are now set dynamically in render() using L10N
 const DeviceSettingsView::SettingDef DeviceSettingsView::DEFS[SETTING_COUNT] = {
-    {"Auto Sleep Timeout", SLEEP_TIMEOUT_VALUES, 5}, {"Sleep Screen", SLEEP_SCREEN_VALUES, 4},
-    {"Startup Behavior", STARTUP_VALUES, 2},         {"Short Power Button", SHORT_PWR_VALUES, 3},
-    {"Pages Per Refresh", PAGES_REFRESH_VALUES, 5},  {"Sunlight Fading Fix", TOGGLE_VALUES, 2},
-    {"Front Buttons", FRONT_BUTTON_VALUES, 2},       {"Side Buttons", SIDE_BUTTON_VALUES, 2},
-    {"Language", LANGUAGE_VALUES, 2},
+    {"", SLEEP_TIMEOUT_VALUES, 5}, {"", SLEEP_SCREEN_VALUES, 4},
+    {"", STARTUP_VALUES, 2},       {"", SHORT_PWR_VALUES, 3},
+    {"", PAGES_REFRESH_VALUES, 5}, {"", TOGGLE_VALUES, 2},
+    {"", FRONT_BUTTON_VALUES, 2},  {"", SIDE_BUTTON_VALUES, 2},
+    {"", LANGUAGE_VALUES, 2},
 };
 
 // Render functions
@@ -53,10 +55,18 @@ void render(const GfxRenderer& r, const Theme& t, const SettingsMenuView& v) {
 
   title(r, t, t.screenMarginTop, L10N.title_settings);
 
+  // Localized menu items
+  const char* items[] = {
+    L10N.settings_reader,
+    L10N.settings_device,
+    L10N.settings_cleanup,
+    L10N.settings_system_info
+  };
+
   const int startY = 60;
   for (int i = 0; i < SettingsMenuView::ITEM_COUNT; i++) {
     const int y = startY + i * (t.itemHeight + t.itemSpacing);
-    menuItem(r, t, y, SettingsMenuView::ITEMS[i], i == v.selected);
+    menuItem(r, t, y, items[i], i == v.selected);
   }
 
   buttonBar(r, t, v.buttons);
@@ -67,12 +77,19 @@ void render(const GfxRenderer& r, const Theme& t, const SettingsMenuView& v) {
 void render(const GfxRenderer& r, const Theme& t, const CleanupMenuView& v) {
   r.clearScreen(t.backgroundColor);
 
-  title(r, t, t.screenMarginTop, "Cleanup");
+  title(r, t, t.screenMarginTop, L10N.title_cleanup);
+
+  // Localized cleanup items
+  const char* items[] = {
+    L10N.cleanup_book_cache,
+    L10N.cleanup_device_storage,
+    L10N.cleanup_factory_reset
+  };
 
   const int startY = 60;
   for (int i = 0; i < CleanupMenuView::ITEM_COUNT; i++) {
     const int y = startY + i * (t.itemHeight + t.itemSpacing);
-    menuItem(r, t, y, CleanupMenuView::ITEMS[i], i == v.selected);
+    menuItem(r, t, y, items[i], i == v.selected);
   }
 
   buttonBar(r, t, v.buttons);
@@ -133,10 +150,23 @@ void render(const GfxRenderer& r, const Theme& t, const DeviceSettingsView& v) {
 
   title(r, t, t.screenMarginTop, L10N.title_device);
 
+  // Localized device setting labels
+  const char* labels[] = {
+    L10N.device_sleep_timeout,
+    L10N.device_sleep_screen,
+    L10N.device_startup,
+    L10N.device_short_pwr,
+    L10N.device_pages_refresh,
+    L10N.device_sunlight_fix,
+    L10N.device_front_buttons,
+    L10N.device_side_buttons,
+    L10N.device_language
+  };
+
   const int startY = 60;
   for (int i = 0; i < DeviceSettingsView::SETTING_COUNT; i++) {
     const int y = startY + i * (t.itemHeight + t.itemSpacing);
-    enumValue(r, t, y, DeviceSettingsView::DEFS[i].label, v.getCurrentValueStr(i), i == v.selected);
+    enumValue(r, t, y, labels[i], v.getCurrentValueStr(i), i == v.selected);
   }
 
   buttonBar(r, t, v.buttons);
@@ -169,7 +199,7 @@ void render(const GfxRenderer& r, const Theme& t, const ConfirmDialogView& v) {
   constexpr int totalWidth = buttonWidth * 2 + buttonSpacing;
   const int startX = (pageWidth - totalWidth) / 2;
 
-  const char* buttonLabels[] = {"Yes", "No"};
+  const char* buttonLabels[] = {L10N.button_yes, L10N.button_no};
   const int buttonPositions[] = {startX, startX + buttonWidth + buttonSpacing};
 
   for (int i = 0; i < 2; i++) {
