@@ -12,6 +12,7 @@
 #include "../config.h"
 #include "../core/BootMode.h"
 #include "../core/Core.h"
+#include "../Localization.h"
 #include "Battery.h"
 #include "FontManager.h"
 #include "MappedInputManager.h"
@@ -27,6 +28,9 @@ HomeState::~HomeState() { freeCoverThumbnail(); }
 
 void HomeState::enter(Core& core) {
   LOG_INF(TAG, "Entering");
+
+  // Set localized button labels
+  view_.buttons = ui::ButtonBar{L10N.btn_read, L10N.btn_files, L10N.btn_sync, L10N.btn_settings};
 
   // Load last book info if content is still open
   loadLastBook(core);

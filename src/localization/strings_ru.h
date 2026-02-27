@@ -14,10 +14,10 @@ constexpr LocalizedStrings STRINGS_RU = {
   // Button labels
   .btn_files = "Файлы",
   .btn_sync = "Синхр.",
-  .btn_settings = "Настройки",
+  .btn_settings = "Настр.",
   .btn_read = "Читать",
   .btn_back = "Назад",
-  .btn_select = "Выбрать",
+  .btn_select = "Выбор",
   .btn_menu = "Меню",
   .btn_home = "Домой",
   
