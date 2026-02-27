@@ -38,6 +38,10 @@ constexpr LocalizedStrings STRINGS_EN = {
   .title_calibre_sync = "Calibre Sync",
   .title_sync = "Sync",
   
+  // Sync menu items
+  .sync_file_transfer = "File Transfer",
+  .sync_calibre_wireless = "Calibre Wireless",
+  
   // Settings menu items
   .settings_reader = "Reader",
   .settings_device = "Device",
@@ -151,12 +155,16 @@ constexpr LocalizedStrings STRINGS_EN = {
   .cleanup_factory_reset = "Factory Reset",
   
   // System info labels
-  .info_firmware = "Firmware",
-  .info_device = "Device",
-  .info_free_heap = "Free Heap",
-  .info_sd_card = "SD Card",
+  .info_version = "Version",
+  .info_uptime = "Uptime",
   .info_battery = "Battery",
-  .info_wifi_mac = "WiFi MAC",
+  .info_chip = "Chip",
+  .info_cpu = "CPU",
+  .info_free_memory = "Free Memory",
+  .info_internal_disk = "Internal Disk",
+  .info_sd_card = "SD Card",
+  .info_sd_ready = "Ready",
+  .info_sd_not_available = "Not available",
   
   // Network
   .network_mode = "Network Mode",
@@ -195,7 +203,18 @@ constexpr LocalizedStrings STRINGS_EN = {
   
   // Buttons/Actions
   .button_yes = "Yes",
-  .button_no = "No"
+  .button_no = "No",
+  
+  // Confirmation dialogs
+  .confirm_clear_cache_title = "Clear Caches?",
+  .confirm_clear_cache_line1 = "This will delete all book caches",
+  .confirm_clear_cache_line2 = "and reading progress.",
+  .confirm_clear_device_title = "Clear Device?",
+  .confirm_clear_device_line1 = "This will erase internal flash",
+  .confirm_clear_device_line2 = "storage. Device will restart.",
+  .confirm_factory_reset_title = "Factory Reset?",
+  .confirm_factory_reset_line1 = "This will erase ALL data including",
+  .confirm_factory_reset_line2 = "settings and WiFi credentials!"
 };
 
 }  // namespace papyrix

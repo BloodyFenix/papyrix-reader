@@ -575,7 +575,7 @@ void SettingsState::populateSystemInfo() {
   infoView_.clear();
 
   // Firmware version
-  infoView_.addField("Version", PAPYRIX_VERSION);
+  infoView_.addField(L10N.info_version, PAPYRIX_VERSION);
 
   // Uptime
   const unsigned long uptimeSeconds = millis() / 1000;
@@ -584,7 +584,7 @@ void SettingsState::populateSystemInfo() {
   const unsigned long seconds = uptimeSeconds % 60;
   char uptimeStr[24];
   snprintf(uptimeStr, sizeof(uptimeStr), "%luh %lum %lus", hours, minutes, seconds);
-  infoView_.addField("Uptime", uptimeStr);
+  infoView_.addField(L10N.info_uptime, uptimeStr);
 
   // Battery
   const uint16_t millivolts = batteryMonitor.readMillivolts();
@@ -595,20 +595,20 @@ void SettingsState::populateSystemInfo() {
     const uint8_t percentage = BatteryMonitor::percentageFromMillivolts(millivolts);
     snprintf(batteryStr, sizeof(batteryStr), "%u%% (%umV)", percentage, millivolts);
   }
-  infoView_.addField("Battery", batteryStr);
+  infoView_.addField(L10N.info_battery, batteryStr);
 
   // Chip model
-  infoView_.addField("Chip", ESP.getChipModel());
+  infoView_.addField(L10N.info_chip, ESP.getChipModel());
 
   // CPU frequency
   char freqStr[16];
   snprintf(freqStr, sizeof(freqStr), "%d MHz", ESP.getCpuFreqMHz());
-  infoView_.addField("CPU", freqStr);
+  infoView_.addField(L10N.info_cpu, freqStr);
 
   // Free heap memory
   char heapStr[24];
   snprintf(heapStr, sizeof(heapStr), "%lu KB", ESP.getFreeHeap() / 1024);
-  infoView_.addField("Free Memory", heapStr);
+  infoView_.addField(L10N.info_free_memory, heapStr);
 
   // Internal flash storage (LittleFS)
   const size_t totalBytes = LittleFS.totalBytes();
@@ -616,31 +616,31 @@ void SettingsState::populateSystemInfo() {
   char internalStr[32];
   snprintf(internalStr, sizeof(internalStr), "%lu / %lu KB", (unsigned long)(usedBytes / 1024),
            (unsigned long)(totalBytes / 1024));
-  infoView_.addField("Internal Disk", internalStr);
+  infoView_.addField(L10N.info_internal_disk, internalStr);
 
   // SD Card status
-  infoView_.addField("SD Card", SdMan.ready() ? "Ready" : "Not available");
+  infoView_.addField(L10N.info_sd_card, SdMan.ready() ? L10N.info_sd_ready : L10N.info_sd_not_available);
 }
 
 void SettingsState::clearCache(int type, Core& core) {
   // Set up confirmation dialog messages based on action type
   if (type == 0) {
     // Clear Book Cache - show confirmation
-    confirmView_.setup("Clear Caches?", "This will delete all book caches", "and reading progress.");
+    confirmView_.setup(L10N.confirm_clear_cache_title, L10N.confirm_clear_cache_line1, L10N.confirm_clear_cache_line2);
     pendingAction_ = 10;
     currentScreen_ = SettingsScreen::ConfirmDialog;
     needsRender_ = true;
     return;
   } else if (type == 1) {
     // Clear Device Storage
-    confirmView_.setup("Clear Device?", "This will erase internal flash", "storage. Device will restart.");
+    confirmView_.setup(L10N.confirm_clear_device_title, L10N.confirm_clear_device_line1, L10N.confirm_clear_device_line2);
     pendingAction_ = 11;
     currentScreen_ = SettingsScreen::ConfirmDialog;
     needsRender_ = true;
     return;
   } else if (type == 2) {
     // Factory Reset
-    confirmView_.setup("Factory Reset?", "This will erase ALL data including", "settings and WiFi credentials!");
+    confirmView_.setup(L10N.confirm_factory_reset_title, L10N.confirm_factory_reset_line1, L10N.confirm_factory_reset_line2);
     pendingAction_ = 12;
     currentScreen_ = SettingsScreen::ConfirmDialog;
     needsRender_ = true;

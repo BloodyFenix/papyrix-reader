@@ -38,6 +38,10 @@ constexpr LocalizedStrings STRINGS_RU = {
   .title_calibre_sync = "Синхр. Calibre",
   .title_sync = "Синхронизация",
   
+  // Sync menu items
+  .sync_file_transfer = "Передача файлов",
+  .sync_calibre_wireless = "Calibre по WiFi",
+  
   // Settings menu items
   .settings_reader = "Чтение",
   .settings_device = "Устройство",
@@ -151,12 +155,16 @@ constexpr LocalizedStrings STRINGS_RU = {
   .cleanup_factory_reset = "Сброс до заводских",
   
   // System info labels
-  .info_firmware = "Прошивка",
-  .info_device = "Устройство",
-  .info_free_heap = "Свободная память",
-  .info_sd_card = "SD карта",
+  .info_version = "Версия",
+  .info_uptime = "Время работы",
   .info_battery = "Батарея",
-  .info_wifi_mac = "WiFi MAC",
+  .info_chip = "Чип",
+  .info_cpu = "Процессор",
+  .info_free_memory = "Своб. память",
+  .info_internal_disk = "Внутр. диск",
+  .info_sd_card = "SD карта",
+  .info_sd_ready = "Готова",
+  .info_sd_not_available = "Недоступна",
   
   // Network
   .network_mode = "Режим сети",
@@ -195,7 +203,18 @@ constexpr LocalizedStrings STRINGS_RU = {
   
   // Buttons/Actions
   .button_yes = "Да",
-  .button_no = "Нет"
+  .button_no = "Нет",
+  
+  // Confirmation dialogs
+  .confirm_clear_cache_title = "Очистить кэш?",
+  .confirm_clear_cache_line1 = "Будут удалены все кэши книг",
+  .confirm_clear_cache_line2 = "и прогресс чтения.",
+  .confirm_clear_device_title = "Очистить устройство?",
+  .confirm_clear_device_line1 = "Будет стёрта внутренняя память.",
+  .confirm_clear_device_line2 = "Устройство перезагрузится.",
+  .confirm_factory_reset_title = "Сброс до заводских?",
+  .confirm_factory_reset_line1 = "Будут удалены ВСЕ данные включая",
+  .confirm_factory_reset_line2 = "настройки и учётные данные WiFi!"
 };
 
 }  // namespace papyrix

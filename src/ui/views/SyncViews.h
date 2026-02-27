@@ -13,7 +13,7 @@ struct SyncMenuView {
   static constexpr const char* const ITEMS[] = {"File Transfer", "Calibre Wireless"};
   static constexpr int ITEM_COUNT = 2;
 
-  ButtonBar buttons{"Back", "Run", "", ""};
+  ButtonBar buttons{"", "", "", ""};  // Will be set dynamically with localized strings
   int8_t selected = 0;
   bool needsRender = true;
 

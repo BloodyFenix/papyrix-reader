@@ -4,6 +4,7 @@
 #include <GfxRenderer.h>
 #include <Logging.h>
 
+#include "../Localization.h"
 #include "../core/Core.h"
 #include "ThemeManager.h"
 
@@ -18,6 +19,10 @@ SyncState::~SyncState() = default;
 
 void SyncState::enter(Core& core) {
   LOG_INF(TAG, "Entering");
+  
+  // Set localized button labels
+  menuView_.buttons = ui::ButtonBar{L10N.btn_back, L10N.btn_run, "", ""};
+  
   menuView_.selected = 0;
   menuView_.needsRender = true;
   needsRender_ = true;

@@ -42,6 +42,10 @@ struct LocalizedStrings {
   const char* title_calibre_sync;
   const char* title_sync;
   
+  // Sync menu items
+  const char* sync_file_transfer;
+  const char* sync_calibre_wireless;
+  
   // Settings menu items
   const char* settings_reader;
   const char* settings_device;
@@ -155,12 +159,16 @@ struct LocalizedStrings {
   const char* cleanup_factory_reset;
   
   // System info labels
-  const char* info_firmware;
-  const char* info_device;
-  const char* info_free_heap;
-  const char* info_sd_card;
+  const char* info_version;
+  const char* info_uptime;
   const char* info_battery;
-  const char* info_wifi_mac;
+  const char* info_chip;
+  const char* info_cpu;
+  const char* info_free_memory;
+  const char* info_internal_disk;
+  const char* info_sd_card;
+  const char* info_sd_ready;
+  const char* info_sd_not_available;
   
   // Network
   const char* network_mode;
@@ -200,6 +208,17 @@ struct LocalizedStrings {
   // Buttons/Actions
   const char* button_yes;
   const char* button_no;
+  
+  // Confirmation dialogs
+  const char* confirm_clear_cache_title;
+  const char* confirm_clear_cache_line1;
+  const char* confirm_clear_cache_line2;
+  const char* confirm_clear_device_title;
+  const char* confirm_clear_device_line1;
+  const char* confirm_clear_device_line2;
+  const char* confirm_factory_reset_title;
+  const char* confirm_factory_reset_line1;
+  const char* confirm_factory_reset_line2;
 };
 
 }  // namespace papyrix
