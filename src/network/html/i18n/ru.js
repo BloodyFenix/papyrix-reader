@@ -1,5 +1,5 @@
 // Russian translations for Papyrix web interface
-const translations_ru = {
+window.translations_ru = {
   // Navigation
   'nav.home': 'Главная',
   'nav.files': 'Файлы',
@@ -18,8 +18,11 @@ const translations_ru = {
   // Files page
   'files.title': 'Менеджер файлов',
   'files.current_path': 'Текущий путь',
+  'files.contents': 'Содержимое',
   'files.add': '+ Добавить',
   'files.upload_ebook': 'Загрузить книгу',
+  'files.upload_file': 'Загрузить файл',
+  'files.select_file': 'Выберите файл для загрузки в',
   'files.new_folder': 'Новая папка',
   'files.choose_file': 'Выбрать файл',
   'files.upload': 'Загрузить',
@@ -27,10 +30,14 @@ const translations_ru = {
   'files.upload_success': 'Загрузка завершена!',
   'files.upload_error': 'Ошибка загрузки',
   'files.folder_name': 'Имя папки',
+  'files.folder_name_placeholder': 'Имя папки...',
   'files.create_folder': 'Создать папку',
+  'files.create_folder_in': 'Создать новую папку в',
   'files.creating': 'Создание...',
   'files.folder_created': 'Папка создана!',
   'files.folder_error': 'Не удалось создать папку',
+  'files.delete_item': 'Удалить элемент',
+  'files.delete_warning': '⚠️ Это действие нельзя отменить!',
   'files.delete_confirm': 'Вы уверены, что хотите удалить',
   'files.delete': 'Удалить',
   'files.cancel': 'Отмена',
@@ -43,14 +50,20 @@ const translations_ru = {
   
   // Sleep screens page
   'sleep.title': 'Экраны сна',
+  'sleep.info': 'Загрузите BMP изображения для использования в качестве экранов сна. Установите режим сна "Пользовательский" в настройках устройства. При каждом переходе в сон будет показано случайное изображение.',
+  'sleep.images': 'Изображения',
   'sleep.upload': 'Загрузить',
+  'sleep.upload_screen': 'Загрузить экран сна',
+  'sleep.select_bmp': 'Выберите BMP изображение для загрузки в качестве экрана сна.',
   'sleep.total_images': 'Всего изображений',
   'sleep.total_size': 'Общий размер',
   'sleep.choose_bmp': 'Выбрать BMP файл',
   'sleep.uploading': 'Загрузка...',
   'sleep.upload_success': 'Загрузка завершена!',
   'sleep.upload_error': 'Ошибка загрузки',
-  'sleep.delete_confirm': 'Удалить этот экран сна?',
+  'sleep.delete_screen': 'Удалить экран сна',
+  'sleep.delete_warning': '⚠️ Это действие нельзя отменить!',
+  'sleep.delete_confirm': 'Вы уверены, что хотите удалить:',
   'sleep.delete': 'Удалить',
   'sleep.cancel': 'Отмена',
   'sleep.deleting': 'Удаление...',

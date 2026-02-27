@@ -1,5 +1,5 @@
 // English translations for Papyrix web interface
-const translations_en = {
+window.translations_en = {
   // Navigation
   'nav.home': 'Home',
   'nav.files': 'File Manager',
@@ -18,8 +18,11 @@ const translations_en = {
   // Files page
   'files.title': 'File Manager',
   'files.current_path': 'Current Path',
+  'files.contents': 'Contents',
   'files.add': '+ Add',
   'files.upload_ebook': 'Upload eBook',
+  'files.upload_file': 'Upload file',
+  'files.select_file': 'Select a file to upload to',
   'files.new_folder': 'New Folder',
   'files.choose_file': 'Choose File',
   'files.upload': 'Upload',
@@ -27,10 +30,14 @@ const translations_en = {
   'files.upload_success': 'Upload successful!',
   'files.upload_error': 'Upload failed',
   'files.folder_name': 'Folder Name',
+  'files.folder_name_placeholder': 'Folder name...',
   'files.create_folder': 'Create Folder',
+  'files.create_folder_in': 'Create a new folder in',
   'files.creating': 'Creating...',
   'files.folder_created': 'Folder created!',
   'files.folder_error': 'Failed to create folder',
+  'files.delete_item': 'Delete Item',
+  'files.delete_warning': '⚠️ This action cannot be undone!',
   'files.delete_confirm': 'Are you sure you want to delete',
   'files.delete': 'Delete',
   'files.cancel': 'Cancel',
@@ -43,14 +50,20 @@ const translations_en = {
   
   // Sleep screens page
   'sleep.title': 'Sleep Screens',
+  'sleep.info': 'Upload BMP images to use as custom sleep screens. Set sleep mode to "Custom" in device settings. A random image will be shown each time the device sleeps.',
+  'sleep.images': 'Images',
   'sleep.upload': 'Upload',
+  'sleep.upload_screen': 'Upload Sleep Screen',
+  'sleep.select_bmp': 'Select a BMP image to upload as a sleep screen.',
   'sleep.total_images': 'Total Images',
   'sleep.total_size': 'Total Size',
   'sleep.choose_bmp': 'Choose BMP file',
   'sleep.uploading': 'Uploading...',
   'sleep.upload_success': 'Upload successful!',
   'sleep.upload_error': 'Upload failed',
-  'sleep.delete_confirm': 'Delete this sleep screen?',
+  'sleep.delete_screen': 'Delete Sleep Screen',
+  'sleep.delete_warning': '⚠️ This action cannot be undone!',
+  'sleep.delete_confirm': 'Are you sure you want to delete:',
   'sleep.delete': 'Delete',
   'sleep.cancel': 'Cancel',
   'sleep.deleting': 'Deleting...',

@@ -56,6 +56,9 @@ class PapyrixWebServer {
   void handleSleepScreens();
   void handleSleepScreensData();
   void handleSleepScreenDelete();
+  void handleI18nJs();
+  void handleI18nEnJs();
+  void handleI18nRuJs();
 };
 
 }  // namespace papyrix

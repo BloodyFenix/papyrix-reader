@@ -5,6 +5,8 @@
 let translations = {};
 let currentLang = 'en';
 let systemLang = null;
+let isInitializing = false;
+let isInitialized = false;
 
 // Load translation file dynamically
 async function loadTranslations(lang) {
@@ -64,16 +66,29 @@ function detectBrowserLanguage() {
 
 // Determine which language to use
 async function determineLanguage() {
-  // Priority 1: Saved user preference
+  // Priority 1: System language from device (always use device language by default)
+  systemLang = await getSystemLanguage();
+  if (systemLang) {
+    // Check if user has explicitly changed language AND it differs from system
+    const saved = localStorage.getItem('papyrix-web-lang');
+    const userChanged = localStorage.getItem('papyrix-web-lang-user-set');
+    
+    // If user explicitly changed language AND it's different from system language, use their preference
+    if (saved && userChanged === 'true' && saved !== systemLang) {
+      return saved;
+    }
+    
+    // Otherwise always use system language (this clears old localStorage values)
+    if (saved !== systemLang) {
+      localStorage.removeItem('papyrix-web-lang-user-set');
+    }
+    return systemLang;
+  }
+  
+  // Priority 2: Saved user preference (fallback if API fails)
   const saved = localStorage.getItem('papyrix-web-lang');
   if (saved) {
     return saved;
-  }
-  
-  // Priority 2: System language from device
-  systemLang = await getSystemLanguage();
-  if (systemLang) {
-    return systemLang;
   }
   
   // Priority 3: Browser language
@@ -132,6 +147,7 @@ async function setLanguage(lang) {
     
     currentLang = lang;
     localStorage.setItem('papyrix-web-lang', lang);
+    localStorage.setItem('papyrix-web-lang-user-set', 'true');
     applyTranslations();
     
     return true;
@@ -143,6 +159,26 @@ async function setLanguage(lang) {
 
 // Initialize i18n system
 async function initI18n() {
+  // Prevent multiple simultaneous initializations
+  if (isInitializing) {
+    // Wait for initialization to complete
+    return new Promise((resolve) => {
+      const checkInit = setInterval(() => {
+        if (isInitialized) {
+          clearInterval(checkInit);
+          resolve();
+        }
+      }, 50);
+    });
+  }
+  
+  if (isInitialized) {
+    applyTranslations();
+    return;
+  }
+  
+  isInitializing = true;
+  
   try {
     // Determine which language to use
     const lang = await determineLanguage();
@@ -158,18 +194,31 @@ async function initI18n() {
     }
     
     currentLang = lang;
+    
+    // Apply translations after DOM is ready
+    if (document.readyState === 'loading') {
+      await new Promise(resolve => {
+        document.addEventListener('DOMContentLoaded', resolve, { once: true });
+      });
+    }
+    
     applyTranslations();
+    
+    isInitialized = true;
+    isInitializing = false;
     
     // Dispatch event to notify that i18n is ready
     window.dispatchEvent(new CustomEvent('i18n-ready', { detail: { language: lang } }));
     
   } catch (error) {
     console.error('Failed to initialize i18n:', error);
+    isInitializing = false;
     // Fallback to English
     currentLang = 'en';
     if (translations.en) {
       applyTranslations();
     }
+    isInitialized = true;
   }
 }
 
@@ -188,5 +237,6 @@ window.i18n = {
   getCurrentLanguage: () => currentLang,
   getSystemLanguage: () => systemLang,
   getAvailableLanguages: () => Object.keys(translations),
-  isReady: () => Object.keys(translations).length > 0
+  isReady: () => isInitialized,
+  applyTranslations
 };

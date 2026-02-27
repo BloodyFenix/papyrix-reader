@@ -13,6 +13,9 @@
 #include "html/FilesPageHtml.generated.h"
 #include "html/HomePageHtml.generated.h"
 #include "html/SleepPageHtml.generated.h"
+#include "html/I18nJs.generated.h"
+#include "html/i18n/EnJs.generated.h"
+#include "html/i18n/RuJs.generated.h"
 
 #define TAG "WEBSERVER"
 
@@ -21,6 +24,11 @@ namespace papyrix {
 static void sendGzipHtml(WebServer* server, const char* data, size_t len) {
   server->sendHeader("Content-Encoding", "gzip");
   server->send_P(200, "text/html", data, len);
+}
+
+static void sendGzipJs(WebServer* server, const char* data, size_t len) {
+  server->sendHeader("Content-Encoding", "gzip");
+  server->send_P(200, "application/javascript", data, len);
 }
 
 bool PapyrixWebServer::flushUploadBuffer() {
@@ -77,6 +85,9 @@ void PapyrixWebServer::begin() {
   server_->on("/sleep", HTTP_GET, [this] { handleSleepScreens(); });
   server_->on("/api/sleep-screens", HTTP_GET, [this] { handleSleepScreensData(); });
   server_->on("/sleep/delete", HTTP_POST, [this] { handleSleepScreenDelete(); });
+  server_->on("/i18n.js", HTTP_GET, [this] { handleI18nJs(); });
+  server_->on("/i18n/en.js", HTTP_GET, [this] { handleI18nEnJs(); });
+  server_->on("/i18n/ru.js", HTTP_GET, [this] { handleI18nRuJs(); });
   server_->onNotFound([this] { handleNotFound(); });
 
   server_->begin();
@@ -520,5 +531,11 @@ void PapyrixWebServer::handleSleepScreenDelete() {
     server_->send(500, "text/plain", "Failed to delete");
   }
 }
+
+void PapyrixWebServer::handleI18nJs() { sendGzipJs(server_.get(), I18nJs, I18nJsCompressedSize); }
+
+void PapyrixWebServer::handleI18nEnJs() { sendGzipJs(server_.get(), EnJs, EnJsCompressedSize); }
+
+void PapyrixWebServer::handleI18nRuJs() { sendGzipJs(server_.get(), RuJs, RuJsCompressedSize); }
 
 }  // namespace papyrix
