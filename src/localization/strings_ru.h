@@ -215,14 +215,14 @@ constexpr LocalizedStrings STRINGS_RU = {
   
   // Confirmation dialogs
   .confirm_clear_cache_title = "Очистить кэш?",
-  .confirm_clear_cache_line1 = "Будут удалены все кэши книг",
-  .confirm_clear_cache_line2 = "и прогресс чтения.",
-  .confirm_clear_device_title = "Очистить устройство?",
-  .confirm_clear_device_line1 = "Будет стёрта внутренняя память.",
-  .confirm_clear_device_line2 = "Устройство перезагрузится.",
-  .confirm_factory_reset_title = "Сброс до заводских?",
-  .confirm_factory_reset_line1 = "Будут удалены ВСЕ данные включая",
-  .confirm_factory_reset_line2 = "настройки и учётные данные WiFi!",
+  .confirm_clear_cache_line1 = "Удалить кэши книг",
+  .confirm_clear_cache_line2 = "и прогресс чтения?",
+  .confirm_clear_device_title = "Очистить память?",
+  .confirm_clear_device_line1 = "Стереть внутр. память.",
+  .confirm_clear_device_line2 = "Перезагрузка.",
+  .confirm_factory_reset_title = "Сброс?",
+  .confirm_factory_reset_line1 = "Удалить ВСЕ данные",
+  .confirm_factory_reset_line2 = "и настройки WiFi?",
   
   // FileList
   .filelist_books = "Книги",
