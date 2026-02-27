@@ -214,7 +214,21 @@ constexpr LocalizedStrings STRINGS_EN = {
   .confirm_clear_device_line2 = "storage. Device will restart.",
   .confirm_factory_reset_title = "Factory Reset?",
   .confirm_factory_reset_line1 = "This will erase ALL data including",
-  .confirm_factory_reset_line2 = "settings and WiFi credentials!"
+  .confirm_factory_reset_line2 = "settings and WiFi credentials!",
+  
+  // FileList
+  .filelist_books = "Books",
+  .filelist_books_page = "Books (%d/%d)",
+  .filelist_no_books = "No books found",
+  .filelist_delete = "Delete",
+  .filelist_confirm_delete_title = "Confirm Delete",
+  .filelist_delete_file = "Delete this file?",
+  .filelist_delete_folder = "Delete this folder?",
+  .filelist_deleting = "Deleting...",
+  .filelist_deleted = "Deleted",
+  .filelist_delete_failed = "Delete failed",
+  .filelist_cannot_delete_active = "Cannot delete active book",
+  .filelist_opening_book = "Opening book..."
 };
 
 }  // namespace papyrix

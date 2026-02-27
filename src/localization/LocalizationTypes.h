@@ -219,6 +219,20 @@ struct LocalizedStrings {
   const char* confirm_factory_reset_title;
   const char* confirm_factory_reset_line1;
   const char* confirm_factory_reset_line2;
+  
+  // FileList
+  const char* filelist_books;
+  const char* filelist_books_page;  // "Books (%d/%d)"
+  const char* filelist_no_books;
+  const char* filelist_delete;
+  const char* filelist_confirm_delete_title;
+  const char* filelist_delete_file;  // "Delete this file?"
+  const char* filelist_delete_folder;  // "Delete this folder?"
+  const char* filelist_deleting;
+  const char* filelist_deleted;
+  const char* filelist_delete_failed;
+  const char* filelist_cannot_delete_active;
+  const char* filelist_opening_book;
 };
 
 }  // namespace papyrix

@@ -214,7 +214,21 @@ constexpr LocalizedStrings STRINGS_RU = {
   .confirm_clear_device_line2 = "Устройство перезагрузится.",
   .confirm_factory_reset_title = "Сброс до заводских?",
   .confirm_factory_reset_line1 = "Будут удалены ВСЕ данные включая",
-  .confirm_factory_reset_line2 = "настройки и учётные данные WiFi!"
+  .confirm_factory_reset_line2 = "настройки и учётные данные WiFi!",
+  
+  // FileList
+  .filelist_books = "Книги",
+  .filelist_books_page = "Книги (%d/%d)",
+  .filelist_no_books = "Книги не найдены",
+  .filelist_delete = "Удалить",
+  .filelist_confirm_delete_title = "Подтверждение удаления",
+  .filelist_delete_file = "Удалить этот файл?",
+  .filelist_delete_folder = "Удалить эту папку?",
+  .filelist_deleting = "Удаление...",
+  .filelist_deleted = "Удалено",
+  .filelist_delete_failed = "Ошибка удаления",
+  .filelist_cannot_delete_active = "Нельзя удалить активную книгу",
+  .filelist_opening_book = "Открытие книги..."
 };
 
 }  // namespace papyrix
