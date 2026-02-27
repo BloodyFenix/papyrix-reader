@@ -174,6 +174,145 @@ void render(const GfxRenderer& r, const Theme& t, const DeviceSettingsView& v) {
   r.displayBuffer();
 }
 
+const char* ReaderSettingsView::getCurrentValueStr(int index) const {
+  const auto& def = DEFS[index];
+  if (def.type == SettingType::Toggle) {
+    return values[index] ? L10N.toggle_on : L10N.toggle_off;
+  }
+  if (def.type == SettingType::ThemeSelect) {
+    if (themeCount > 0 && currentThemeIndex < themeCount) {
+      return themeNames[currentThemeIndex];
+    }
+    return "light";
+  }
+  
+  // Bounds check to prevent array out-of-bounds access from corrupted settings
+  if (def.enumCount == 0 || values[index] >= def.enumCount) {
+    return "???";
+  }
+  
+  // Return localized strings based on setting index and value
+  switch (index) {
+    case 1:  // Font Size
+      switch (values[index]) {
+        case 0: return L10N.font_size_xs;
+        case 1: return L10N.font_size_s;
+        case 2: return L10N.font_size_m;
+        case 3: return L10N.font_size_l;
+        default: return "???";
+      }
+    case 2:  // Text Layout
+      switch (values[index]) {
+        case 0: return L10N.layout_compact;
+        case 1: return L10N.layout_standard;
+        case 2: return L10N.layout_large;
+        default: return "???";
+      }
+    case 3:  // Line Spacing
+      switch (values[index]) {
+        case 0: return L10N.spacing_tight;
+        case 1: return L10N.spacing_normal;
+        case 2: return L10N.spacing_relaxed;
+        case 3: return L10N.spacing_loose;
+        default: return "???";
+      }
+    case 5:  // Alignment
+      switch (values[index]) {
+        case 0: return L10N.align_justified;
+        case 1: return L10N.align_left;
+        case 2: return L10N.align_center;
+        case 3: return L10N.align_right;
+        default: return "???";
+      }
+    case 8:  // Status Bar
+      switch (values[index]) {
+        case 0: return L10N.status_bar_none;
+        case 1: return L10N.status_bar_title;
+        case 2: return L10N.status_bar_chapter;
+        default: return "???";
+      }
+    case 9:  // Orientation
+      switch (values[index]) {
+        case 0: return L10N.orient_portrait;
+        case 1: return L10N.orient_landscape_cw;
+        case 2: return L10N.orient_inverted;
+        case 3: return L10N.orient_landscape_ccw;
+        default: return "???";
+      }
+    default:
+      return def.enumValues[values[index]];
+  }
+}
+
+const char* DeviceSettingsView::getCurrentValueStr(int index) const {
+  const auto& def = DEFS[index];
+  // Bounds check to prevent array out-of-bounds access from corrupted settings
+  if (def.valueCount == 0 || values[index] >= def.valueCount) {
+    return "???";
+  }
+  
+  // Return localized strings based on setting index and value
+  switch (index) {
+    case 0:  // Sleep Timeout
+      switch (values[index]) {
+        case 0: return L10N.sleep_5min;
+        case 1: return L10N.sleep_10min;
+        case 2: return L10N.sleep_15min;
+        case 3: return L10N.sleep_30min;
+        case 4: return L10N.sleep_never;
+        default: return "???";
+      }
+    case 1:  // Sleep Screen
+      switch (values[index]) {
+        case 0: return L10N.sleep_screen_dark;
+        case 1: return L10N.sleep_screen_light;
+        case 2: return L10N.sleep_screen_custom;
+        case 3: return L10N.sleep_screen_cover;
+        default: return "???";
+      }
+    case 2:  // Startup
+      switch (values[index]) {
+        case 0: return L10N.startup_last_book;
+        case 1: return L10N.startup_home;
+        default: return "???";
+      }
+    case 3:  // Short Power Button
+      switch (values[index]) {
+        case 0: return L10N.short_pwr_ignore;
+        case 1: return L10N.short_pwr_sleep;
+        case 2: return L10N.short_pwr_page_turn;
+        default: return "???";
+      }
+    case 4:  // Pages Refresh
+      switch (values[index]) {
+        case 0: return L10N.pages_refresh_1;
+        case 1: return L10N.pages_refresh_5;
+        case 2: return L10N.pages_refresh_10;
+        case 3: return L10N.pages_refresh_15;
+        case 4: return L10N.pages_refresh_30;
+        default: return "???";
+      }
+    case 5:  // Sunlight Fix (Toggle)
+      return values[index] ? L10N.toggle_on : L10N.toggle_off;
+    case 6:  // Front Buttons
+      switch (values[index]) {
+        case 0: return "B/C/L/R";  // Keep as is (button layout)
+        case 1: return "L/R/B/C";
+        default: return "???";
+      }
+    case 7:  // Side Buttons
+      switch (values[index]) {
+        case 0: return "Prev/Next";  // Keep as is
+        case 1: return "Next/Prev";
+        default: return "???";
+      }
+    case 8:  // Language
+      return def.values[values[index]];  // Keep original (English/Русский)
+    default:
+      return def.values[values[index]];
+  }
+}
+
 void render(const GfxRenderer& r, const Theme& t, const ConfirmDialogView& v) {
   const int pageWidth = r.getScreenWidth();
   const int pageHeight = r.getScreenHeight();

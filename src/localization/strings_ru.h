@@ -104,9 +104,9 @@ constexpr LocalizedStrings STRINGS_RU = {
   .device_sleep_timeout = "Таймаут сна",
   .device_sleep_screen = "Экран сна",
   .device_startup = "При запуске",
-  .device_short_pwr = "Короткое нажатие питания",
-  .device_pages_refresh = "Страниц до обновления",
-  .device_sunlight_fix = "Исправление выцветания",
+  .device_short_pwr = "Кнопка питания",
+  .device_pages_refresh = "Обновление",
+  .device_sunlight_fix = "Исправл. выцветания",
   .device_front_buttons = "Передние кнопки",
   .device_side_buttons = "Боковые кнопки",
   .device_language = "Язык",
@@ -114,15 +114,19 @@ constexpr LocalizedStrings STRINGS_RU = {
   // Sleep timeout values
   .sleep_5min = "5 минут",
   .sleep_10min = "10 минут",
+  .sleep_15min = "15 минут",
   .sleep_30min = "30 минут",
   .sleep_1hour = "1 час",
   .sleep_never = "Никогда",
   .sleep_sleeping = "СПЯЩИЙ РЕЖИМ",
   
   // Sleep screen values
+  .sleep_screen_dark = "Тёмный",
+  .sleep_screen_light = "Светлый",
+  .sleep_screen_custom = "Свой",
+  .sleep_screen_cover = "Обложка",
   .sleep_screen_blank = "Пустой",
   .sleep_screen_logo = "Логотип",
-  .sleep_screen_cover = "Обложка книги",
   .sleep_screen_last_page = "Последняя страница",
   
   // Startup values
@@ -130,7 +134,9 @@ constexpr LocalizedStrings STRINGS_RU = {
   .startup_last_book = "Последняя книга",
   
   // Short power button values
+  .short_pwr_ignore = "Игнорировать",
   .short_pwr_sleep = "Сон",
+  .short_pwr_page_turn = "Перелистывание",
   .short_pwr_menu = "Меню",
   .short_pwr_nothing = "Ничего",
   
@@ -139,6 +145,8 @@ constexpr LocalizedStrings STRINGS_RU = {
   .pages_refresh_3 = "Каждые 3 страницы",
   .pages_refresh_5 = "Каждые 5 страниц",
   .pages_refresh_10 = "Каждые 10 страниц",
+  .pages_refresh_15 = "Каждые 15 страниц",
+  .pages_refresh_30 = "Каждые 30 страниц",
   .pages_refresh_never = "Никогда",
   
   // Toggle values

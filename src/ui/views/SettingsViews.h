@@ -160,23 +160,7 @@ struct ReaderSettingsView {
     needsRender = true;
   }
 
-  const char* getCurrentValueStr(int index) const {
-    const auto& def = DEFS[index];
-    if (def.type == SettingType::Toggle) {
-      return values[index] ? "ON" : "OFF";
-    }
-    if (def.type == SettingType::ThemeSelect) {
-      if (themeCount > 0 && currentThemeIndex < themeCount) {
-        return themeNames[currentThemeIndex];
-      }
-      return "light";
-    }
-    // Bounds check to prevent array out-of-bounds access from corrupted settings
-    if (def.enumCount == 0 || values[index] >= def.enumCount) {
-      return def.enumCount > 0 ? def.enumValues[0] : "???";
-    }
-    return def.enumValues[values[index]];
-  }
+  const char* getCurrentValueStr(int index) const;
 
   const char* getCurrentThemeName() const {
     if (themeCount > 0 && currentThemeIndex < themeCount) {
@@ -233,14 +217,7 @@ struct DeviceSettingsView {
     needsRender = true;
   }
 
-  const char* getCurrentValueStr(int index) const {
-    const auto& def = DEFS[index];
-    // Bounds check to prevent array out-of-bounds access from corrupted settings
-    if (def.valueCount == 0 || values[index] >= def.valueCount) {
-      return def.valueCount > 0 ? def.values[0] : "???";
-    }
-    return def.values[values[index]];
-  }
+  const char* getCurrentValueStr(int index) const;
 };
 
 void render(const GfxRenderer& r, const Theme& t, const DeviceSettingsView& v);

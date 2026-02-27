@@ -118,15 +118,19 @@ struct LocalizedStrings {
   // Sleep timeout values
   const char* sleep_5min;
   const char* sleep_10min;
+  const char* sleep_15min;
   const char* sleep_30min;
   const char* sleep_1hour;
   const char* sleep_never;
   const char* sleep_sleeping;
   
   // Sleep screen values
+  const char* sleep_screen_dark;
+  const char* sleep_screen_light;
+  const char* sleep_screen_custom;
+  const char* sleep_screen_cover;
   const char* sleep_screen_blank;
   const char* sleep_screen_logo;
-  const char* sleep_screen_cover;
   const char* sleep_screen_last_page;
   
   // Startup values
@@ -134,7 +138,9 @@ struct LocalizedStrings {
   const char* startup_last_book;
   
   // Short power button values
+  const char* short_pwr_ignore;
   const char* short_pwr_sleep;
+  const char* short_pwr_page_turn;
   const char* short_pwr_menu;
   const char* short_pwr_nothing;
   
@@ -143,6 +149,8 @@ struct LocalizedStrings {
   const char* pages_refresh_3;
   const char* pages_refresh_5;
   const char* pages_refresh_10;
+  const char* pages_refresh_15;
+  const char* pages_refresh_30;
   const char* pages_refresh_never;
   
   // Toggle values

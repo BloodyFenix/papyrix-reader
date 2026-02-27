@@ -114,15 +114,19 @@ constexpr LocalizedStrings STRINGS_EN = {
   // Sleep timeout values
   .sleep_5min = "5 minutes",
   .sleep_10min = "10 minutes",
+  .sleep_15min = "15 minutes",
   .sleep_30min = "30 minutes",
   .sleep_1hour = "1 hour",
   .sleep_never = "Never",
   .sleep_sleeping = "SLEEPING",
   
   // Sleep screen values
+  .sleep_screen_dark = "Dark",
+  .sleep_screen_light = "Light",
+  .sleep_screen_custom = "Custom",
+  .sleep_screen_cover = "Cover",
   .sleep_screen_blank = "Blank",
   .sleep_screen_logo = "Logo",
-  .sleep_screen_cover = "Book Cover",
   .sleep_screen_last_page = "Last Page",
   
   // Startup values
@@ -130,7 +134,9 @@ constexpr LocalizedStrings STRINGS_EN = {
   .startup_last_book = "Last Book",
   
   // Short power button values
+  .short_pwr_ignore = "Ignore",
   .short_pwr_sleep = "Sleep",
+  .short_pwr_page_turn = "Page Turn",
   .short_pwr_menu = "Menu",
   .short_pwr_nothing = "Nothing",
   
@@ -139,6 +145,8 @@ constexpr LocalizedStrings STRINGS_EN = {
   .pages_refresh_3 = "Every 3 pages",
   .pages_refresh_5 = "Every 5 pages",
   .pages_refresh_10 = "Every 10 pages",
+  .pages_refresh_15 = "Every 15 pages",
+  .pages_refresh_30 = "Every 30 pages",
   .pages_refresh_never = "Never",
   
   // Toggle values
