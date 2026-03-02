@@ -8,6 +8,38 @@ import struct
 from pathlib import Path
 
 
+def rotate_90_ccw(data, width, height):
+    """Поворачивает изображение на 90 градусов против часовой стрелки"""
+    # Создаем битовый массив для удобства работы
+    bits = []
+    for byte in data:
+        for i in range(8):
+            bits.append((byte >> (7 - i)) & 1)
+    
+    # Создаем новый массив для повернутого изображения
+    rotated_bits = [0] * (width * height)
+    
+    # Поворот: новый[y][x] = старый[x][height-1-y]
+    for y in range(height):
+        for x in range(width):
+            old_idx = y * width + x
+            new_x = y
+            new_y = height - 1 - x
+            new_idx = new_y * width + new_x
+            rotated_bits[new_idx] = bits[old_idx]
+    
+    # Конвертируем биты обратно в байты
+    result = bytearray()
+    for i in range(0, len(rotated_bits), 8):
+        byte = 0
+        for j in range(8):
+            if i + j < len(rotated_bits):
+                byte |= (rotated_bits[i + j] << (7 - j))
+        result.append(byte)
+    
+    return bytes(result)
+
+
 def read_bmp_to_array(bmp_path):
     """Читает монохромный BMP и возвращает массив байтов для C"""
     
@@ -57,6 +89,9 @@ def read_bmp_to_array(bmp_path):
         
         # Объединяем все строки
         pixel_data = b''.join(rows)
+        
+        # Поворачиваем на 90 градусов против часовой стрелки
+        pixel_data = rotate_90_ccw(pixel_data, width, height)
         
         return pixel_data
 
