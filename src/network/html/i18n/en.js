@@ -1,4 +1,4 @@
-// English translations for Papyrix web interface
+// English translations for Klepyrus web interface
 window.translations_en = {
   // Navigation
   'nav.home': 'Home',
@@ -6,7 +6,7 @@ window.translations_en = {
   'nav.sleep': 'Sleep Screens',
   
   // Home page
-  'home.title': 'Papyrix Reader',
+  'home.title': 'Klepyrus',
   'home.device_status': 'Device Status',
   'home.version': 'Version',
   'home.wifi_status': 'WiFi Status',

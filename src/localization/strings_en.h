@@ -7,6 +7,9 @@ namespace papyrix {
 
 // English strings
 constexpr LocalizedStrings STRINGS_EN = {
+  // App name
+  .app_name = "Klepyrus",
+  
   // Home screen
   .home_no_book = "No book open",
   .home_press_files = "Press \"Files\" to browse",

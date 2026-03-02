@@ -1,4 +1,4 @@
-// Russian translations for Papyrix web interface
+// Russian translations for Klepyrus web interface
 window.translations_ru = {
   // Navigation
   'nav.home': 'Главная',
@@ -6,7 +6,7 @@ window.translations_ru = {
   'nav.sleep': 'Экраны сна',
   
   // Home page
-  'home.title': 'Papyrix Reader',
+  'home.title': 'Клёпирус',
   'home.device_status': 'Статус устройства',
   'home.version': 'Версия',
   'home.wifi_status': 'Статус WiFi',

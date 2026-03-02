@@ -17,8 +17,8 @@ void render(const GfxRenderer& r, const Theme& t, const HomeView& v) {
   const int pageWidth = r.getScreenWidth();
   const int pageHeight = r.getScreenHeight();
 
-  // "Papyrix" brand title - bold in top-left corner
-  brandTitle(r, t, 10, "Papyrix");
+  // Brand title - bold in top-left corner (localized)
+  brandTitle(r, t, 10, L10N.app_name);
 
   // Battery indicator - top right
   battery(r, t, pageWidth - 90, 10, v.batteryPercent);

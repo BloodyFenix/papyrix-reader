@@ -99,7 +99,7 @@ calibre_err_t calibre_handle_init_info(calibre_conn_t* conn, const char* json) {
   char response[1024];
   int len = snprintf(response, sizeof(response),
                      "{"
-                     "\"appName\": \"Papyrix Reader\","
+                     "\"appName\": \"Klepyrus Reader\","
                      "\"acceptedExtensions\": %s,"
                      "\"cacheUsesLpaths\": true,"
                      "\"canAcceptLibraryInfo\": true,"
@@ -111,7 +111,7 @@ calibre_err_t calibre_handle_init_info(calibre_conn_t* conn, const char* json) {
                      "\"canUseCachedMetadata\": true,"
                      "\"ccVersionNumber\": 128,"
                      "\"coverHeight\": 240,"
-                     "\"deviceKind\": \"Papyrix E-Ink Reader\","
+                     "\"deviceKind\": \"Klepyrus E-Ink Reader\","
                      "\"deviceName\": \"%s\","
                      "\"extensionPathLengths\": {},"
                      "\"maxBookContentPacketLen\": %d,"

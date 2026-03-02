@@ -7,6 +7,9 @@ namespace papyrix {
 
 // Russian strings
 constexpr LocalizedStrings STRINGS_RU = {
+  // App name
+  .app_name = "Клёпирус",
+  
   // Home screen
   .home_no_book = "Книга не открыта",
   .home_press_files = "Нажмите \"Файлы\" для просмотра",

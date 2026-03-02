@@ -11,6 +11,9 @@ enum class Language {
 
 // Localization strings structure
 struct LocalizedStrings {
+  // App name
+  const char* app_name;
+  
   // Home screen
   const char* home_no_book;
   const char* home_press_files;
