@@ -235,7 +235,13 @@ void PapyrixWebServer::handleUpload() {
   HTTPUpload& upload = server_->upload();
 
   if (upload.status == UPLOAD_FILE_START) {
-    upload_.fileName = upload.filename;
+    // Используем POST-параметр filename если передан (оригинальное имя),
+    // иначе берём из multipart (может быть UUID при нативной загрузке)
+    if (server_->hasArg("filename") && server_->arg("filename").length() > 0) {
+      upload_.fileName = server_->arg("filename");
+    } else {
+      upload_.fileName = upload.filename;
+    }
     upload_.size = 0;
     upload_.success = false;
     upload_.error = "";
