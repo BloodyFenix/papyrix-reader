@@ -49,6 +49,7 @@ class PapyrixWebServer {
   void handleLanguage();
   void handleFileList();
   void handleFileListData();
+  void handleDownload();
   void handleUpload();
   void handleUploadPost();
   void handleCreateFolder();

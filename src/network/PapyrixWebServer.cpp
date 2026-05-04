@@ -79,6 +79,7 @@ void PapyrixWebServer::begin() {
   server_->on("/api/status", HTTP_GET, [this] { handleStatus(); });
   server_->on("/api/language", HTTP_GET, [this] { handleLanguage(); });
   server_->on("/api/files", HTTP_GET, [this] { handleFileListData(); });
+  server_->on("/download", HTTP_GET, [this] { handleDownload(); });
   server_->on("/upload", HTTP_POST, [this] { handleUploadPost(); }, [this] { handleUpload(); });
   server_->on("/mkdir", HTTP_POST, [this] { handleCreateFolder(); });
   server_->on("/delete", HTTP_POST, [this] { handleDelete(); });
@@ -537,5 +538,71 @@ void PapyrixWebServer::handleI18nJs() { sendGzipJs(server_.get(), I18nJs, I18nJs
 void PapyrixWebServer::handleI18nEnJs() { sendGzipJs(server_.get(), EnJs, EnJsCompressedSize); }
 
 void PapyrixWebServer::handleI18nRuJs() { sendGzipJs(server_.get(), RuJs, RuJsCompressedSize); }
+
+void PapyrixWebServer::handleDownload() {
+  if (!server_->hasArg("path")) {
+    server_->send(400, "text/plain", "Missing path");
+    return;
+  }
+
+  String filePath = server_->arg("path");
+  if (!filePath.startsWith("/")) {
+    filePath = "/" + filePath;
+  }
+
+  // Security: reject path traversal
+  if (filePath.indexOf("..") >= 0) {
+    server_->send(400, "text/plain", "Invalid path");
+    return;
+  }
+
+  if (!SdMan.exists(filePath.c_str())) {
+    server_->send(404, "text/plain", "File not found");
+    return;
+  }
+
+  FsFile file = SdMan.open(filePath.c_str());
+  if (!file || file.isDirectory()) {
+    server_->send(400, "text/plain", "Not a file");
+    if (file) file.close();
+    return;
+  }
+
+  // Extract filename for Content-Disposition
+  String fileName = filePath.substring(filePath.lastIndexOf('/') + 1);
+
+  // Determine MIME type
+  String lower = fileName;
+  lower.toLowerCase();
+  String mimeType = "application/octet-stream";
+  if (lower.endsWith(".epub")) mimeType = "application/epub+zip";
+  else if (lower.endsWith(".fb2")) mimeType = "application/x-fictionbook+xml";
+  else if (lower.endsWith(".txt")) mimeType = "text/plain";
+  else if (lower.endsWith(".pdf")) mimeType = "application/pdf";
+
+  size_t fileSize = file.size();
+
+  server_->sendHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+  server_->sendHeader("Content-Length", String(fileSize));
+  server_->sendHeader("Access-Control-Allow-Origin", "*");
+  server_->setContentLength(fileSize);
+  server_->send(200, mimeType, "");
+
+  // Stream file in chunks
+  static constexpr size_t CHUNK = 4096;
+  uint8_t buf[CHUNK];
+  size_t remaining = fileSize;
+
+  while (remaining > 0 && file) {
+    size_t toRead = remaining < CHUNK ? remaining : CHUNK;
+    size_t read   = file.read(buf, toRead);
+    if (read == 0) break;
+    server_->sendContent_P((const char*)buf, read);
+    remaining -= read;
+  }
+
+  file.close();
+  LOG_INF(TAG, "Downloaded: %s (%zu bytes)", filePath.c_str(), fileSize);
+}
 
 }  // namespace papyrix
